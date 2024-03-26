@@ -1,0 +1,49 @@
+{% extends "accounts/main.html" %} 
+{% block content %} 
+{% include "accounts/status.html" %}
+<div class="row">
+  <div class="col">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Date Ordered</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for k in orders %}
+          <tr>
+            <td>{{ k.product }}</td>
+            <td>{{ k.product.category }}</td>
+            <td>{{ k.data_created }}</td>
+            <td>{{ k.status }}</td>
+          </tr>
+
+          {% endfor %}
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <!-- Content related to manage.py, sqlite3, etc. -->
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <!-- Additional content or tags -->
+  </div>
+</div>
+
+ {% endblock content %}

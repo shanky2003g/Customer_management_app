@@ -1,0 +1,111 @@
+{% extends "accounts/main.html" %} {% block content %}
+<br />
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h5 class="card-title">Customer Information</h5>
+        <hr class="my-4" />
+        <a class="btn btn-info btn-sm btn-block" href="#">Update Customer</a>
+        <a class="btn btn-danger btn-sm btn-block mt-2" href="#"
+          >Delete Customer</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h5 class="card-title">Contact Information</h5>
+        <hr class="my-4" />
+        <p><strong>Email:</strong> {{ email.name }}</p>
+        <p><strong>Phone:</strong> {{ email.phone }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h5 class="card-title">Total Orders</h5>
+        <hr class="my-4" />
+        <h1 class="text-center display-4"></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <div class="card card-body">
+      <form method="get">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Date Ordered</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for k in o %}
+          <tr>
+            <td>{{ k.product }}</td>
+            <td>{{ k.product.category }}</td>
+            <td>{{ k.data_created }}</td>
+            <td>{{ k.status }}</td>
+            <td>
+              <a href="{% url 'pqr' k.id %}" class="btn btn-success btn-sm"
+                >Update</a
+              >
+            </td>
+            <td>
+              <a href="{% url 'abc' k.id %}" class="btn btn-danger btn-sm"
+                >Remove</a
+              >
+            </td>
+          </tr>
+
+          {% endfor %}
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <!-- Content related to manage.py, sqlite3, etc. -->
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <!-- Additional content or tags -->
+  </div>
+</div>
+
+{% endblock %}

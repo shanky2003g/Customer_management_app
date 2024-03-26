@@ -1,0 +1,116 @@
+{% extends "accounts/main.html" %} {% block content %}
+ {% include "accounts/status.html" %}
+<br />
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .cool-link {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .cool-link:hover {
+        color: #e74c3c;
+      }
+
+      /* Add your custom styles here */
+      body {
+        padding-top: 20px;
+      }
+
+      .card {
+        margin-bottom: 20px;
+      }
+    </style>
+    <title>Your Page Title</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <br />
+          <h5>CUSTOMERS:</h5>
+          <div class="card">
+            <div class="card-body">
+              <a class="btn btn-primary btn-sm btn-block" href="#"
+                >Create Customer</a
+              >
+              <table class="table table-sm">
+                <tr>
+                  <th>Customer</th>
+                  <th>Orders</th>
+                </tr>
+
+                {% for w in l2 %}
+                <tr>
+                  <td>
+                    <a href="{% url 'customer' w.id %}" class="cool-link"
+                      >{{ w.name }}</a
+                    >
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7">
+          <h5>LAST 5 ORDERS</h5>
+          <hr />
+          <div class="card">
+            <div class="card-body">
+              <a class="btn btn-primary btn-sm btn-block" href="{% url 'xyz' %}"
+                >Create Order</a
+              >
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for w in l1 %}
+                  <tr>
+                    <td>{{ w.product }}</td>
+                    <td>{{ w.data_created }}</td>
+                    <td>{{ w.status }}</td>
+                    <td>
+                      <a
+                        href="{% url 'pqr' w.id %}"
+                        class="btn btn-success btn-sm"
+                        >Update</a
+                      >
+                    </td>
+                    <td>
+                      <a href="{% url 'abc' w.id %}" class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endblock %}
